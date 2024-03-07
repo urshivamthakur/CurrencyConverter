@@ -75,13 +75,19 @@ form input {
 }
 
 .select-container select {
-    font-size: 1rem;
+    font-size: 0.80rem;
     cursor: pointer;
 }
 
 .dropdown i {
     font-size: 1.25rem;
     margin: 0.75rem 0 0;
+}
+
+.dropdown option{
+    font-size: 12px;
+    background-color: #284b63;
+    color: #fff;
 }
 
 .msg {
