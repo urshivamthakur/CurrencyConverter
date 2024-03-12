@@ -6,6 +6,7 @@ const btn = document.querySelector("form button");
 const fromCurr = document.querySelector("#from select");
 const toCurr = document.querySelector("#to select");
 const msg = document.querySelector(".msg");
+const i = document.querySelector("i");
 
 for (let select of dropdowns) {
   for (currCode in countryList) {
@@ -59,5 +60,26 @@ const updateExchangeRate = async () => {
 };
 
 window.addEventListener("load", () => {
+  updateExchangeRate();
+});
+
+function swapDropdowns() {
+  
+  const selectedOption1 = fromCurr.options[fromCurr.selectedIndex];
+  const selectedOption2 = toCurr.options[toCurr.selectedIndex];
+  
+  const selectedIndex1 = fromCurr.selectedIndex;
+  const selectedIndex2 = toCurr.selectedIndex;
+  
+  // Swap options
+  fromCurr.removeChild(selectedOption1);
+  toCurr.removeChild(selectedOption2);
+  
+  fromCurr.insertBefore(selectedOption2, fromCurr.options[selectedIndex1]);
+  toCurr.insertBefore(selectedOption1, toCurr.options[selectedIndex2]);
+}
+
+i.addEventListener("click", () => {
+  swapDropdowns();
   updateExchangeRate();
 });
