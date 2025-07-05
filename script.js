@@ -29,7 +29,7 @@ const updateFlag = (element) => {
   let currCode = element.value;
   let countryCode = countryList[currCode];
   let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
-  let img = element.parentElement.querySelector(".dropdown img");
+  let img = element.parentElement.querySelector("img");
   img.src = newSrc;
 };
 
@@ -67,16 +67,20 @@ function swapDropdowns() {
   
   const selectedOption1 = fromCurr.options[fromCurr.selectedIndex];
   const selectedOption2 = toCurr.options[toCurr.selectedIndex];
-  
+
   const selectedIndex1 = fromCurr.selectedIndex;
   const selectedIndex2 = toCurr.selectedIndex;
-  
+
   // Swap options
   fromCurr.removeChild(selectedOption1);
   toCurr.removeChild(selectedOption2);
-  
+
   fromCurr.insertBefore(selectedOption2, fromCurr.options[selectedIndex1]);
   toCurr.insertBefore(selectedOption1, toCurr.options[selectedIndex2]);
+
+  // Update flags after swapping
+  updateFlag(fromCurr);
+  updateFlag(toCurr);
 }
 
 i.addEventListener("click", () => {
